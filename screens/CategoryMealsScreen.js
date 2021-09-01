@@ -1,10 +1,16 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
-const CategoryScreen = () => {
+const CategoryMealsScreen = (props) => {
   return (
     <View style={styles.screen}>
       <Text>The Category Screen</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => {
+          props.navigation.navigate("MealDetails");
+        }}
+      ></Button>
     </View>
   );
 };
@@ -16,4 +22,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-export default CategoryScreen;
+export default CategoryMealsScreen;
