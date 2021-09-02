@@ -1,5 +1,6 @@
 import React from "react";
 import { Platform } from "react-native";
+import { Route } from "@react-navigation/routers";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -14,14 +15,16 @@ const Stack = createStackNavigator();
 const MealsNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: Platform.OS === "android" ? Colors.primary : "",
+          },
+          headerTintColor: Platform.OS === "android" ? "white" : Colors.primary,
+        }}
+      >
         <Stack.Screen
           options={{
-            headerStyle: {
-              backgroundColor: Platform.OS === "android" ? Colors.primary : "",
-            },
-            headerTintColor:
-              Platform.OS === "android" ? "white" : Colors.primary,
             title: "Meal Categories",
           }}
           name="Categories"
@@ -31,30 +34,12 @@ const MealsNavigator = () => {
           name="CategoryMeals"
           component={CatergoryMealsScreen}
           title="Category Meals"
-          options={
-            (({ route }) => ({ title: route.params.categoryTitle }),
-            {
-              headerStyle: {
-                backgroundColor:
-                  Platform.OS === "android" ? Colors.primary : "",
-              },
-              headerTintColor:
-                Platform.OS === "android" ? "white" : Colors.primary,
-            })
-          }
+          options={({ route }) => ({ title: route.params.categoryTitle })}
         />
         <Stack.Screen
-          options={{
-            headerStyle: {
-              backgroundColor: Platform.OS === "android" ? Colors.primary : "",
-            },
-            headerTintColor:
-              Platform.OS === "android" ? "white" : Colors.primary,
-            title: "Meal Categories",
-          }}
+          options={({ route }) => ({ title: route.params.mealTitle })}
           name="MealDetails"
           component={MealDetailScreen}
-          sc
         />
       </Stack.Navigator>
     </NavigationContainer>
