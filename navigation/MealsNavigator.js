@@ -30,17 +30,17 @@ const MealsNavigator = () => {
         <Stack.Screen
           name="CategoryMeals"
           component={CatergoryMealsScreen}
+          title="Category Meals"
           options={
-            ({
+            (({ route }) => ({ title: route.params.categoryTitle }),
+            {
               headerStyle: {
                 backgroundColor:
                   Platform.OS === "android" ? Colors.primary : "",
               },
               headerTintColor:
                 Platform.OS === "android" ? "white" : Colors.primary,
-              title: "Meal Categories",
-            },
-            ({ route }) => ({ title: route.params.categoryTitle }))
+            })
           }
         />
         <Stack.Screen
@@ -54,6 +54,7 @@ const MealsNavigator = () => {
           }}
           name="MealDetails"
           component={MealDetailScreen}
+          sc
         />
       </Stack.Navigator>
     </NavigationContainer>
