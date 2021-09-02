@@ -1,5 +1,6 @@
+import "react-native-gesture-handler";
 import React, { useState } from "react";
-import * as FOnt from "expo-font";
+import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -19,6 +20,7 @@ export default function App() {
       <AppLoading
         startAsync={fetchFonts}
         onFinish={() => setFontLoaded(true)}
+        onError={(err) => console.log(err)}
       ></AppLoading>
     );
   }
