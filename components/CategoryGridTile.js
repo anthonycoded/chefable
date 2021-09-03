@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 15,
     height: 150,
+    elevation: 3,
+    overflow: Platform.OS === "android" ? "hidden" : "visible",
+    borderRadius: 10,
   },
   title: {
     fontFamily: "open-sans-bold",
