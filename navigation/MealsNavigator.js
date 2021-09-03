@@ -1,9 +1,13 @@
 import React from "react";
 import { Platform } from "react-native";
-import { Route } from "@react-navigation/routers";
-
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from "@react-navigation/stack";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+
+import CustomHeaderButton from "../components/CustomHeaderButton";
 import CategoriesScreen from "../screens/CategoriesScreen";
 import CatergoryMealsScreen from "../screens/CategoryMealsScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
@@ -14,9 +18,10 @@ const Stack = createStackNavigator();
 
 const MealsNavigator = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <Stack.Navigator
         screenOptions={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           headerStyle: {
             backgroundColor: Platform.OS === "android" ? Colors.primary : "",
           },
@@ -24,16 +29,13 @@ const MealsNavigator = () => {
         }}
       >
         <Stack.Screen
-          options={{
-            title: "Meal Categories",
-          }}
+          options={{ title: "Meal Categories" }}
           name="Categories"
           component={CategoriesScreen}
         />
         <Stack.Screen
           name="CategoryMeals"
           component={CatergoryMealsScreen}
-          title="Category Meals"
           options={({ route }) => ({ title: route.params.categoryTitle })}
         />
         <Stack.Screen
@@ -45,4 +47,5 @@ const MealsNavigator = () => {
     </NavigationContainer>
   );
 };
-export default MealsNavigator;
+
+export { MealsNavigator };
