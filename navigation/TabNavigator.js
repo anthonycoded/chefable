@@ -5,20 +5,21 @@ import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 
 import { MealsNavigator } from "./MealsNavigator";
-import FavoritesScreen from "../screens/FavoriteScreen";
+import { FavoriteNavigator } from "./FavoriteNavigator";
 import Colors from "../constants/Colors";
 
 const Tab =
   Platform.OS === "android"
-    ? createMaterialBottomTabNavigator({ activeColor: Colors.secondary })
+    ? createMaterialBottomTabNavigator()
     : createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      activeColor={Colors.secondary}
+      activeColor="white"
+      shifting={true}
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ color }) => {
           let iconName;
 
           if (route.name === "Meals") {
@@ -33,19 +34,25 @@ const TabNavigator = () => {
           );
         },
 
-        tabBarActiveTintColor: Colors.secondary,
+        tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "gray",
       })}
     >
       <Tab.Screen
         options={{
           headerShown: false,
-          activeColor: Colors.secondary,
+          tabBarColor: Colors.primary,
         }}
         name="Meals"
         component={MealsNavigator}
       />
-      <Tab.Screen name="Favorites" component={FavoritesScreen} />
+      <Tab.Screen
+        options={{
+          tabBarColor: Colors.secondary,
+        }}
+        name="Favorites"
+        component={FavoriteNavigator}
+      />
     </Tab.Navigator>
   );
 };
