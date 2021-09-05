@@ -5,7 +5,7 @@ import AppLoading from "expo-app-loading";
 import { StyleSheet, Text, View } from "react-native";
 import { enableScreens } from "react-native-screens";
 
-import TabNavigator from "./navigation/TabNavigator";
+import MealsNavigator from "./navigation/MealsNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 
 enableScreens();
@@ -30,7 +30,7 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <TabNavigator></TabNavigator>
+      <MealsNavigator></MealsNavigator>
     </NavigationContainer>
   );
 }
