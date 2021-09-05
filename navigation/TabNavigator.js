@@ -49,7 +49,8 @@ const TabNavigator = () => {
           component={CategoriesScreen}
           options={{
             tabBarColor: Colors.primary,
-            title: "All Meal Categories",
+            title: "Meal Categories",
+            headerTitle: "Meal Categories",
             tabBarIcon: (tabInfo) => {
               return (
                 <Ionicons
@@ -67,6 +68,8 @@ const TabNavigator = () => {
           component={FavoriteNavigator}
           options={{
             title: "Favorite Meals",
+            headerShown: false,
+            headerTitle: "Fav Meals",
             tabBarColor: Colors.secondary,
             tabBarIcon: (tabInfo) => {
               return (
