@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { Button, StyleSheet, FlatList } from "react-native";
 
 import { CATEGORIES } from "../dummy-data";
 import Colors from "../constants/Colors";
@@ -49,6 +42,7 @@ CategoriesScreen["navigationOptions"] = () => {
       backgroundColor: Colors.primary,
     },
     headerTintColor: "white",
+    headerTitle: "Meal Categories",
   };
 };
 const styles = StyleSheet.create({
