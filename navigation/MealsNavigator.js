@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DrawerActions } from "@react-navigation/native";
 import {
   createStackNavigator,
   CardStyleInterpolators,
@@ -8,10 +8,10 @@ import {
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import CustomHeaderButton from "../components/CustomHeaderButton";
-import CategoriesScreen from "../screens/CategoriesScreen";
 import CatergoryMealsScreen from "../screens/CategoryMealsScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
 
+import DrawerNavigator from "./DrawerNavigator";
 import Colors from "../constants/Colors";
 
 const Stack = createStackNavigator();
@@ -26,13 +26,30 @@ const MealsNavigator = () => {
             backgroundColor: Platform.OS === "android" ? Colors.primary : "",
           },
           headerTintColor: Platform.OS === "android" ? "white" : Colors.primary,
+          title: "Meal App",
+          headerMode: "screen",
         }}
       >
+        {/* drawer navigator */}
+
         <Stack.Screen
-          options={{ title: "Meal Categories" }}
-          name="Categories"
-          component={CategoriesScreen}
+          options={({ navigation }) => ({
+            headerLeft: () => (
+              <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                <Item
+                  title="menu"
+                  iconName="ios-menu"
+                  onPress={() =>
+                    navigation.dispatch(DrawerActions.toggleDrawer())
+                  }
+                ></Item>
+              </HeaderButtons>
+            ),
+          })}
+          name="DrawerNavigator"
+          component={DrawerNavigator}
         />
+
         <Stack.Screen
           name="CategoryMeals"
           component={CatergoryMealsScreen}
@@ -48,4 +65,4 @@ const MealsNavigator = () => {
   );
 };
 
-export { MealsNavigator };
+export default MealsNavigator;
