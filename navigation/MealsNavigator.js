@@ -8,7 +8,7 @@ import {
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import CustomHeaderButton from "../components/CustomHeaderButton";
-import CatergoryMealsScreen from "../screens/CategoryMealsScreen";
+import CategoryMealsScreen from "../screens/CategoryMealsScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
 
 import DrawerNavigator from "./DrawerNavigator";
@@ -52,7 +52,7 @@ const MealsNavigator = () => {
 
         <Stack.Screen
           name="CategoryMeals"
-          component={CatergoryMealsScreen}
+          component={CategoryMealsScreen}
           options={({ route }) => ({ title: route.params.categoryTitle })}
         />
         <Stack.Screen
