@@ -14,28 +14,26 @@ const Stack = createStackNavigator();
 
 const FavoriteNavigator = () => {
   return (
-    <NavigationContainer independent={true}>
-      <Stack.Navigator
-        screenOptions={{
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          headerStyle: {
-            backgroundColor: Platform.OS === "android" ? Colors.primary : "",
-          },
-          headerTintColor: Platform.OS === "android" ? "white" : Colors.primary,
-        }}
-      >
-        <Stack.Screen
-          name="Favorites"
-          component={FavoritesScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="MealDetails"
-          component={MealDetailScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        headerStyle: {
+          backgroundColor: Platform.OS === "android" ? Colors.primary : "",
+        },
+        headerTintColor: Platform.OS === "android" ? "white" : Colors.primary,
+      }}
+    >
+      <Stack.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="MealDetails"
+        component={MealDetailScreen}
+      />
+    </Stack.Navigator>
   );
 };
 
