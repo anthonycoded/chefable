@@ -2,13 +2,11 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { NavigationContainer } from "@react-navigation/native";
 import { Platform } from "react-native";
 
 import Colors from "../constants/Colors";
 import { FavoriteNavigator } from "./FavoriteNavigator";
 import CategoriesScreen from "../screens/CategoriesScreen";
-import CategoryMealsScreen from "../screens/CategoryMealsScreen";
 
 const Tab =
   Platform.OS === "android"
