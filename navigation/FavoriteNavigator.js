@@ -27,12 +27,10 @@ const FavoriteNavigator = () => {
         <Stack.Screen
           name="Favorites"
           component={FavoritesScreen}
-          options={{
-            title: "Your Favorites",
-          }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-          options={({ route }) => ({ title: route.params.mealTitle })}
+          options={{ headerShown: false }}
           name="MealDetails"
           component={MealDetailScreen}
         />
