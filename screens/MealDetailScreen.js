@@ -38,17 +38,6 @@ MealDetailScreen["navigationOptions"] = (route, navigation) => {
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
   return {
     headerTitle: selectedMeal.title,
-    headerRight: (
-      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item
-          title="Favorite"
-          iconName="ios-star"
-          onPress={() => {
-            console.log("it worked");
-          }}
-        ></Item>
-      </HeaderButtons>
-    ),
   };
 };
 const styles = StyleSheet.create({
