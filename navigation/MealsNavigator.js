@@ -56,7 +56,20 @@ const MealsNavigator = () => {
           options={({ route }) => ({ title: route.params.categoryTitle })}
         />
         <Stack.Screen
-          options={({ route }) => ({ title: route.params.mealTitle })}
+          options={({ route }) => ({
+            headerRight: () => (
+              <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                <Item
+                  title="Favorite"
+                  iconName="ios-star"
+                  onPress={() => {
+                    console.log("it worked");
+                  }}
+                ></Item>
+              </HeaderButtons>
+            ),
+            title: route.params.mealTitle,
+          })}
           name="MealDetails"
           component={MealDetailScreen}
         />
