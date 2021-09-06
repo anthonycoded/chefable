@@ -1,6 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
+
 import FiltersScreen from "../screens/FiltersScreen";
 import TabNavigator from "./TabNavigator";
 import Colors from "../constants/Colors";
