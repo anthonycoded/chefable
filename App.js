@@ -1,14 +1,22 @@
-import "react-native-gesture-handler";
 import React, { useState } from "react";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet } from "react-native";
+import { enableScreens } from "react-native-screens";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-import { StyleSheet, Text, View } from "react-native";
-import { enableScreens } from "react-native-screens";
 
+import mealsReducer from "./store/reducers/meals";
 import MealsNavigator from "./navigation/MealsNavigator";
-import { NavigationContainer } from "@react-navigation/native";
 
 enableScreens();
+const rootReducer = combineReducers({
+  meals: mealsReducer,
+});
+
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -29,9 +37,11 @@ export default function App() {
     );
   }
   return (
-    <NavigationContainer>
-      <MealsNavigator></MealsNavigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MealsNavigator></MealsNavigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
