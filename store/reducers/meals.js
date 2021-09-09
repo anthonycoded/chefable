@@ -1,7 +1,7 @@
-import { MEALS } from "../../dummy-data";
+import { MEALS } from "../../mealsData";
 
 const initialState = {
-  meals,
+  meals: MEALS,
   favoriteMeals: [],
   filteredMeals: MEALS,
 };
