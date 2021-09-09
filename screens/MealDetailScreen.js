@@ -1,15 +1,35 @@
 import React from "react";
 import { View, Text, ScrollView, Image, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
+import CustomHeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
 import ListItem from "../components/ListItem";
 
-const MealDetailScreen = ({ route }, props) => {
+const MealDetailScreen = ({ route, navigation }, props) => {
   const availableMeals = useSelector((state) => state.meals.meals);
   const { mealId } = route.params;
   const selectedMeal = availableMeals.find((meal) => meal.id === mealId);
   console.log(selectedMeal);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: selectedMeal.title,
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+          <Item
+            title="Favorite"
+            iconName="ios-star"
+            onPress={() => {
+              console.log("it worked");
+            }}
+          ></Item>
+        </HeaderButtons>
+      ),
+    });
+  }, [navigation]);
+
   return (
     <ScrollView>
       <Image
@@ -31,14 +51,6 @@ const MealDetailScreen = ({ route }, props) => {
       ))}
     </ScrollView>
   );
-};
-
-MealDetailScreen["navigationOptions"] = (route, navigation) => {
-  const mealId = route.params;
-  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
-  return {
-    headerTitle: selectedMeal.title,
-  };
 };
 const styles = StyleSheet.create({
   image: {
