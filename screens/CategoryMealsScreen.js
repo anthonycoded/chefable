@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { View, StyleSheet, FlatList } from "react-native";
 
 import Colors from "../constants/Colors";
 import MealList from "../components/MealList";
