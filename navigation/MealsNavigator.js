@@ -6,8 +6,7 @@ import {
   CardStyleInterpolators,
 } from "@react-navigation/stack";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
-
-import CustomHeaderButton from "../components/CustomHeaderButton";
+import CustomHeaderButton from "../components/HeaderButton";
 import CategoryMealsScreen from "../screens/CategoryMealsScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
 
@@ -56,18 +55,7 @@ const MealsNavigator = () => {
           options={({ route }) => ({ title: route.params.categoryTitle })}
         />
         <Stack.Screen
-          options={({ route }) => ({
-            headerRight: () => (
-              <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-                <Item
-                  title="Favorite"
-                  iconName="ios-star"
-                  onPress={() => {
-                    console.log("it worked");
-                  }}
-                ></Item>
-              </HeaderButtons>
-            ),
+          options={({ route, navigation }) => ({
             title: route.params.mealTitle,
           })}
           name="MealDetails"
